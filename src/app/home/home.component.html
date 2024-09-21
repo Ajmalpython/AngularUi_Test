@@ -1,0 +1,102 @@
+<div class="container mt-5">
+  <!-- Navigation Bar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
+    <a class="navbar-brand" href="#">Task Management</a>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <p class="nav-link"><b>{{DispalyName}}</b></p>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-danger" href="#" (click)="logout()">Log Out</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <h1 class="text-center mb-4">Task Management</h1>
+
+  <form novalidate>
+    <div class="row mb-4">
+      <div class="col-md-4">
+        <div class="form-group">
+          <input type="text" [readOnly]="isEditing" class="form-control" placeholder="Task Title"
+            [(ngModel)]="newTask.title" name="title" required />
+          <div *ngIf="istaskempty" class="text-danger">
+            Task Title is required.
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <textarea class="form-control" placeholder="Task Description" [(ngModel)]="newTask.description"
+            name="description" required></textarea>
+          <div *ngIf="isDescriptionempty" class="text-danger">
+            Task Description is required.
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <input type="date" class="form-control" [(ngModel)]="newTask.dueDate" name="dueDate" required />
+          <!-- <div *ngIf="taskForm.submitted && !newTask.dueDate" class="text-danger">
+            Due Date is required.
+          </div> -->
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb-4">
+      <div class="col-md-4">
+        <div class="form-group">
+          <select class="form-control" [(ngModel)]="newTask.status" name="status">
+            <option value="incomplete">Incomplete</option>
+            <option value="complete">Complete</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <button class="btn btn-primary mr-2" type="button" (click)="addTask()">
+          {{ isEditing ? 'Update Task' : 'Add Task' }}
+        </button>
+        <button class="btn btn-secondary" type="button" (click)="resetForm()">Cancel</button>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Task Title</th>
+              <th>Description</th>
+              <th>Due Date</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngIf="tasks.length === 0">
+              <td colspan="5" class="text-center">No data found.</td>
+            </tr>
+            <tr *ngFor="let task of tasks">
+              <td>{{ task.title }}</td>
+              <td>{{ task.description }}</td>
+              <td>{{ task.dueDate | date }}</td>
+              <td>
+                <span class="badge badge-{{ task.status === 'complete' ? 'success' : 'warning' }}">
+                  {{ task.status }}
+                </span>
+              </td>
+              <td>
+                <button class="btn btn-warning btn-sm mr-2" (click)="editTask(task)">Edit</button>
+                <button class="btn btn-danger btn-sm" (click)="deleteTask(task)">Delete</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </form>
+</div>
