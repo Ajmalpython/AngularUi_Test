@@ -24,7 +24,7 @@ export class LoginComponent {
 
 
   ngOnInit() {
-localStorage.clear();
+    localStorage.clear();
   }
 
   Login() {
@@ -38,13 +38,13 @@ localStorage.clear();
       let apires: any
       apires = res
       this.message = apires.message
-     
-    
-      if(this.message=="Success"){
-        this.message="";
-        localStorage.setItem("token",apires.data.token)
-        localStorage.setItem("userid",apires.data.userid)
-        localStorage.setItem("DispalyName",apires.data.name)
+
+
+      if (this.message == "Success") {
+        this.message = "";
+        localStorage.setItem("token", apires.data.token)
+        localStorage.setItem("userid", apires.data.userid)
+        localStorage.setItem("DispalyName", apires.data.name)
         this.router.navigateByUrl('home')
       }
       setTimeout(() => {
@@ -52,7 +52,7 @@ localStorage.clear();
       }, 60000);
     }), (error => {
       console.log(error)
-      this.message="Something went wrong.";
+      this.message = "Something went wrong.";
       setTimeout(() => {
         this.message = "";
       }, 60000);

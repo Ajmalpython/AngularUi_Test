@@ -1,37 +1,40 @@
 <div class="register-container">
   <div class="register-box">
-      <h2 class="text-center">Register</h2>
-      <form [formGroup]="RegisterFrom" >
-        
-          <div class="form-group">
-            <label for="name">Name</label>
-            <input type="text" class="form-control" formControlName="Name" id="name" placeholder="Enter your name" required>
-            <div *ngIf="RegisterFrom.get('Name')?.invalid && RegisterFrom.get('Name')?.touched" class="text-danger">
-              Name is required.
-            </div>
-          </div>
+    <h2 class="text-center">Register</h2>
+    <form [formGroup]="RegisterFrom">
 
-          <div class="form-group">
-            <label for="name">Email</label>
-            <input type="text" class="form-control" formControlName="email" id="email" placeholder="Enter your Email" required>
-            <div *ngIf="RegisterFrom.get('email')?.invalid && RegisterFrom.get('email')?.touched" class="text-danger">
-              Email is required.
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label for="name">Password</label>
-            <input type="password" class="form-control" formControlName="password" id="password" placeholder="Enter your password" required>
-            <div *ngIf="RegisterFrom.get('password')?.invalid && RegisterFrom.get('password')?.touched" class="text-danger">
-              Password is required.
-            </div>
-          </div>
-
-          <button type="button" [disabled]="RegisterFrom.invalid" class="btn btn-primary btn-block" (click)="Regisetr()">Register</button>
-      </form>
-      <p style="color: red;">{{message}}</p>
-      <div class="text-center mt-3">
-          <p>Already have an account? <a (click)="Login()" style="color: blue;" class="btn btn-link">Login</a></p>
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" formControlName="Name" id="name" placeholder="Enter your name" required>
+        <div *ngIf="RegisterFrom.get('Name')?.invalid && RegisterFrom.get('Name')?.touched" class="text-danger">
+          Name is required.
+        </div>
       </div>
+
+      <div class="form-group">
+        <label for="name">Email</label>
+        <input type="text" class="form-control" formControlName="email" id="email" placeholder="Enter your Email"
+          required>
+        <div *ngIf="RegisterFrom.get('email')?.invalid && RegisterFrom.get('email')?.touched" class="text-danger">
+          Email is required.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="name">Password</label>
+        <input type="password" class="form-control" formControlName="password" id="password"
+          placeholder="Enter your password" required>
+        <div *ngIf="RegisterFrom.get('password')?.invalid && RegisterFrom.get('password')?.touched" class="text-danger">
+          Password is required.
+        </div>
+      </div>
+
+      <button type="button" [disabled]="RegisterFrom.invalid" class="btn btn-primary btn-block"
+        (click)="Regisetr()">Register</button>
+    </form>
+    <p style="color: red;">{{message}}</p>
+    <div class="text-center mt-3">
+      <p>Already have an account? <a (click)="Login()" style="color: blue;" class="btn btn-link">Login</a></p>
+    </div>
   </div>
 </div>

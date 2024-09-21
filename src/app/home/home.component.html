@@ -1,4 +1,4 @@
-<div class="container mt-5">
+<div class="container">
   <!-- Navigation Bar -->
   <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
     <a class="navbar-brand" href="#">Task Management</a>
@@ -13,12 +13,11 @@
       </ul>
     </div>
   </nav>
-
-  <h1 class="text-center mb-4">Task Management</h1>
-
   <form novalidate>
-    <div class="row mb-4">
-      <div class="col-md-4">
+
+
+    <div class="row">
+      <div class="col">
         <div class="form-group">
           <input type="text" [readOnly]="isEditing" class="form-control" placeholder="Task Title"
             [(ngModel)]="newTask.title" name="title" required />
@@ -27,16 +26,7 @@
           </div>
         </div>
       </div>
-      <div class="col-md-4">
-        <div class="form-group">
-          <textarea class="form-control" placeholder="Task Description" [(ngModel)]="newTask.description"
-            name="description" required></textarea>
-          <div *ngIf="isDescriptionempty" class="text-danger">
-            Task Description is required.
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4">
+      <div class="col">
         <div class="form-group">
           <input type="date" class="form-control" [(ngModel)]="newTask.dueDate" name="dueDate" required />
           <!-- <div *ngIf="taskForm.submitted && !newTask.dueDate" class="text-danger">
@@ -44,10 +34,7 @@
           </div> -->
         </div>
       </div>
-    </div>
-
-    <div class="row mb-4">
-      <div class="col-md-4">
+      <div class="col">
         <div class="form-group">
           <select class="form-control" [(ngModel)]="newTask.status" name="status">
             <option value="incomplete">Incomplete</option>
@@ -56,13 +43,30 @@
         </div>
       </div>
 
-      <div class="col-md-4">
-        <button class="btn btn-primary mr-2" type="button" (click)="addTask()">
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="form-group">
+          <textarea class="form-control" placeholder="Task Description" [(ngModel)]="newTask.description"
+            name="description" required></textarea>
+          <div *ngIf="isDescriptionempty" class="text-danger">
+            Task Description is required.
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="row">
+      <div class="col">
+        <button class="btn btn-secondary mr-2" type="button" (click)="resetForm()">Cancel</button>
+        <button class="btn btn-primary" type="button" (click)="addTask()">
           {{ isEditing ? 'Update Task' : 'Add Task' }}
         </button>
-        <button class="btn btn-secondary" type="button" (click)="resetForm()">Cancel</button>
       </div>
     </div>
+
+<h3 class="mt-5">Task List</h3>
+
 
     <div class="row">
       <div class="col-md-12">

@@ -21,7 +21,7 @@ export class RegisterComponent {
   constructor(private Router: Router, private http: HttpClient) { }
   Regisetr() {
     this.RegisterFrom.value
-    if(!this.isValidEmail(String(this.RegisterFrom.value.email))){
+    if (!this.isValidEmail(String(this.RegisterFrom.value.email))) {
       this.message = "Please enter a valid email address (e.g., example@example.com).";
       setTimeout(() => {
         this.message = "";
@@ -51,10 +51,10 @@ export class RegisterComponent {
       }, 60000);
     }))
   }
-isValidEmail(email: string): boolean {
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return emailRegex.test(email);
-}
+  isValidEmail(email: string): boolean {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  }
   Login() {
     this.Router.navigateByUrl('login')
   }
